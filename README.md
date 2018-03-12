@@ -18,11 +18,11 @@ qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4d
 
 Thats it for a standard implementation!
 
-The following are the configuarble parameters for the qna client (and their defaults):-
+The following are the configuarble parameters for the qna client [and their defaults]:-
 
-"title": ""
-"minimumAcceptableAnswerScore": 50
-"botImageUrl": ""
+title: [empty string]
+minimumAcceptableAnswerScore: [50]
+botImageUrl: [empty string]
 "pageContainerId": ""
 "pageContainerClass": ""
 "theme": "default"

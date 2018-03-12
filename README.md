@@ -25,13 +25,16 @@ qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
 
 
 
+
 An example of initialising the qna bot client would be:-
 
 qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", {});
 
 
 
+
 Thats it for a standard implementation!
+
 
 
 

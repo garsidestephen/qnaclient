@@ -21,8 +21,11 @@ Thats it for a standard implementation!
 The following are the configuarble parameters for the qna client (and their defaults):-
 
 "title": ""
+
 "minimumAcceptableAnswerScore": 50
+
 "botImageUrl": ""
+
 "pageContainerId": ""
 "pageContainerClass": ""
 "theme": "default"

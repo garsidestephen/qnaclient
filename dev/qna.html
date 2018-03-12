@@ -1,0 +1,32 @@
+﻿<link href="/qna/qna.css" rel="stylesheet" />
+<div class="js-qna-launcher qna-launcher">
+    <div class="qna-launcher__button">
+        <img class="js-qna-launcher__button__image" src="/qna/chat-logo.png" alt="start a chat" width="50" height="50" />
+    </div>
+</div>
+<div class="js-qna qna">
+    <div class="js-qna-bot qna-bot">
+        <div class="qna-bot__header">
+            <img class="js-qna-bot__header__logo qna-bot__header__logo" src="" alt="logo" />
+            <label class="js-qna-bot__header__title qna-bot__header__title"></label>
+            <div class="js-qna-bot__header__close qna-bot__header__close" title="Close chat">
+                <svg viewBox="0 0 40 40">
+                    <path class="qna-bot__header__close__x" d="M 10,10 L 30,30 M 30,10 L 10,30" />
+                </svg>
+            </div>
+        </div>
+        <div class="js-qna-bot__stream-wrap qna-bot__stream-wrap">
+            <div class="js-qna-bot__stream-wrap__stream qna-bot__stream-wrap__stream">
+            </div>
+            <div class="js-qna-bot__stream-wrap__busy qna-bot__stream-wrap__busy">
+                <div class="qna-bot__stream-wrap__busy__wrap">
+                    <div class="qna-bot__stream-wrap__busy__wrap__progress"></div>
+                    <p class="js-qna-bot__stream-wrap__busy__wrap__message qna-bot__stream-wrap__busy__wrap__message"></p>
+                </div>
+            </div>
+        </div>
+        <div class="qna-bot__input">
+            <input type="text" class="js-qna-bot__input__text qna-bot__input__text" placeholder="" x-webkit-speech="x-webkit-speech" />
+        </div>
+    </div>
+</div>

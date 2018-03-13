@@ -13,7 +13,7 @@ To implement, follow these 3 steps:-
 
     <script src="/qna/qna.min.js"></script>
     <script>
-    	qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
+    qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
     </script>
 
 

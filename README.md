@@ -9,7 +9,7 @@ To implement, follow these 3 steps:-
 
 2. Copy the files from https://github.com/garsidestephen/qnaclient into your qna folder (excluding the dev folder).
 
-3. Add the following script tags to the bottom of your web page:
+3. Add the following script tags to your web page (at the bottom of your <body> tag) and add your subscription and url keys:-
 
 <script src="/qna/qna.min.js"></script>
 <script>

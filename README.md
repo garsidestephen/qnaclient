@@ -62,3 +62,8 @@ The following are the configurable parameters for the **qnaClient**, together wi
 
 ### Example of Parameter Use
     qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", { "theme" : "default", "title" : "Chat to Stephen Garside"});
+
+
+### Read More
+For more information on this free QNA Maker chatbot client and to see a demonstration of its implementation visit:-
+http://www.stephengarside.co.uk/blog/webdev/create-a-simple-business-chatbot-with-microsoft-qna-maker/

@@ -32,41 +32,28 @@ The following are the configurable parameters for the **qnaClient**, together wi
 
 **"minimumAcceptableAnswerScore"** : "50"  -  Used to calculate whether the top answer returned by your bot is an acceptable response. If all answers returned have a lower score then the '**noAnswer**' phrase is displayed in the chat stream.
 
-**"pageContainerId"** :  ""
-If present, the qna client html will be injected into the dom element with this id.
+**"pageContainerId"** :  ""  -  If present, the qna client html will be injected into the dom element with this id.
 
-**"pageContainerClass"** : ""
-If present, the qna client html will be injected into the dom element with this class.
+**"pageContainerClass"** : ""  -  If present, the qna client html will be injected into the dom element with this class.
 
-**"theme"** :  "default"
-There is currently only 1 theme, however, more are planned, or you can easily create your own!
+**"theme"** :  "default"  -  There is currently only 1 theme, however, more are planned, or you can easily create your own!
 
-**"noAnswerPhrase"** : "Sorry I don't understand."
-Works in conjunction with the '**minimumAcceptableAnswerScore**'. This is the phrase added to the chat stream if your bot cannot provide a suitable answer.
+**"noAnswerPhrase"** : "Sorry I don't understand."  -  Works in conjunction with the '**minimumAcceptableAnswerScore**'. This is the phrase added to the chat stream if your bot cannot provide a suitable answer.
 
-**"somethingGoneWrongPhrase"** : "Mmm, something went wrong there, try me again!"
-If something goes wrong when communicating with your bot, this phrase is displayed in the chat stream.
+**"somethingGoneWrongPhrase"** : "Mmm, something went wrong there, try me again!"  -  If something goes wrong when communicating with your bot, this phrase is displayed in the chat stream.
 
-**"loggingEnabled"** : true
-If enabled, interactions and debug information is written to the console.
+**"loggingEnabled"** : true  -  If enabled, interactions and debug information is written to the console.
 
-**"displayImagesInline"** : false
-If set to true then Images returned in bot answers are displayed as block elements (i.e. on their own line). If false, then images are displayed inline (i.e. within the text).
+**"displayImagesInline"** : false  -  If set to true then Images returned in bot answers are displayed as block elements (i.e. on their own line). If false, then images are displayed inline (i.e. within the text).
 
-**"botPrimingPhrase"** : "Hi"
-When the qnaClient chat window first starts, this phrase is passed to your bot and the response is displayed in the chat stream.
+**"botPrimingPhrase"** : "Hi"  -  When the qnaClient chat window first starts, this phrase is passed to your bot and the response is displayed in the chat stream.
 
-**"logoUrl"** : "/qna/logo.png"
-The url of the logo displayed in the top left of the chat window header. Image should be 50px x 50px and in .png format.
+**"logoUrl"** : "/qna/logo.png"  -  The url of the logo displayed in the top left of the chat window header. Image should be 50px x 50px and in .png format.
 
-**"buttonToolTip"** : "Start a chat"
-The tootltip to display when a user hovers over the chat launcher button.
+**"buttonToolTip"** : "Start a chat"  -  The tootltip to display when a user hovers over the chat launcher button.
 
-**"position"** : "bottom-left"
-The position of the chat launcher button and the chat window. Options are **bottom-left**, **bottom-right**, **top-left**, **top-right**.
+**"position"** : "bottom-left"  -  The position of the chat launcher button and the chat window. Options are **bottom-left**, **bottom-right**, **top-left**, **top-right**.
 
-**"inputPrompt"** : "What would you like to say?"
-The placeholder text prompt displayed in the user input text box.
+**"inputPrompt"** : "What would you like to say?"  -  The placeholder text prompt displayed in the user input text box.
 
-**"busyMessage"** : "Hold on a mo..."
-The message displayed over the chat stream whilst a user question is submitted and a awaiting a response.
+**"busyMessage"** : "Hold on a mo..."  -  The message displayed over the chat stream whilst a user question is submitted and a awaiting a response.

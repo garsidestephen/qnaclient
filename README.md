@@ -1,4 +1,5 @@
 
+
 # qnaClient
 A free javascript client for Microsoft QNA Maker Bot Framework (Requires JQuery 2.1.4 +)
 
@@ -9,12 +10,12 @@ To implement, follow these 3 steps:-
 
 2. Copy the files from https://github.com/garsidestephen/qnaclient into your qna folder (excluding the dev folder).
 
-3. Add the following script tags to your web page (at the bottom of your <body> tag) and add your subscription and url keys:-
+3. Add the following script tags to your web page (at the bottom of your \<body> tag) and add your subscription and url keys:-
 
-<script src="/qna/qna.min.js"></script>
-<script>
-	qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
-</script>
+    \<script src="/qna/qna.min.js"></script>
+    \<script>
+    	qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
+    \</script>
 
 
 ## Initialising

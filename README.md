@@ -1,60 +1,74 @@
-# qnaclient
+
+# qnaClient
 A free javascript client for Microsoft QNA Maker Bot Framework (Requires JQuery 2.1.4 +)
 
-To implement, follow these steps:-
 
+## Implementation
+To implement, follow these 3 steps:-
 1. Create a folder at the root of your website called /qna .
 
 2. Copy the files from https://github.com/garsidestephen/qnaclient into your qna folder (excluding the dev folder).
 
 3. Add the following script tags to the bottom of your web page:
 
-	<script src="/qna/qna.min.js"></script>
-	<script>
-		qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
-	</script>
+    <script src="/qna/qna.min.js"></script>
+    <script>
+    	qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
+    </script>
 
 
-The following is an example of initialising the qna bot client:-
+## Initialising
+The following is an example of initialising the qnaClient:-
 
-	qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", {});
-
+    qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", {});
 
 Thats it for a standard implementation!
 
 
+## Configurable Parameters
+The following are the configurable parameters for the **qnaClient**, together with their defaults and a brief explanation:-
 
+**"title"** :  ""
+(Displayed in the header bar of the chat window)
 
-The following are the configurable parameters for the qna client [and their defaults]:-
+**"minimumAcceptableAnswerScore"** : "50"
+(Used to calculate whether the top answer returned by your bot is an acceptable response. If all answers returned have a lower score then the '**noAnswer**' phrase is displayed in the chat stream.
 
-<b>title</b>: [empty string]
+**"pageContainerId"** :  ""
+If present, the qna client html will be injected into the dom element with this id.
 
-<b>minimumAcceptableAnswerScore</b>: [50]
+**"pageContainerClass"** : ""
+If present, the qna client html will be injected into the dom element with this class.
 
-botImageUrl: [empty string]
+**"theme"** :  "default"
+There is currently only 1 theme, however, more are planned, or you can easily create your own!
 
-"pageContainerId": ""
+**"noAnswerPhrase"** : "Sorry I don't understand."
+Works in conjunction with the '**minimumAcceptableAnswerScore**'. This is the phrase added to the chat stream if your bot cannot provide a suitable answer.
 
-"pageContainerClass": ""
+**"somethingGoneWrongPhrase"** : "Mmm, something went wrong there, try me again!"
+If something goes wrong when communicating with your bot, this phrase is displayed in the chat stream.
 
-"theme": "default"
+**"loggingEnabled"** : true
+If enabled, interactions and debug information is written to the console.
 
-"noAnswerPhrase": "Sorry, I don't understand."
+**"displayImagesInline"** : false
+If set to true then Images returned in bot answers are displayed as block elements (i.e. on their own line). If false, then images are displayed inline (i.e. within the text).
 
-"somethingGoneWrongPhrase": "Mmm, something went wrong there, try me again!"
+**"botPrimingPhrase"** : "Hi"
+When the qnaClient chat window first starts, this phrase is passed to your bot and the response is displayed in the chat stream.
 
-"loggingEnabled": true
+**"logoUrl"** : "/qna/logo.png"
+The url of the logo displayed in the top left of the chat window header. Image should be 50px x 50px and in .png format.
 
-"displayImagesInline": false
+**"buttonToolTip"** : "Start a chat"
+The tootltip to display when a user hovers over the chat launcher button.
 
-"botPrimingPhrase": "Hi"
+**"position"** : "bottom-left"
+The position of the chat launcher button and the chat window. Options are **bottom-left**, **bottom-right**, **top-left**, **top-right**.
 
-"logoUrl": "/qna/logo.png"
+**"inputPrompt"** : "What would you like to say?"
+The placeholder text prompt displayed in the user input text box.
 
-"buttonToolTip": "Start a chat"
-
-"position": "bottom-left"
-
-"inputPrompt": "What would you like to say?"
-
-"busyMessage": "Hold on a mo..." 
+**"busyMessage"** : "Hold on a mo..."
+The message displayed over the chat stream whilst a user question is submitted and a awaiting a response.

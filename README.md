@@ -10,7 +10,7 @@ To implement, follow these 3 steps:-
 
 2. Copy the files from https://github.com/garsidestephen/qnaclient into your qna folder (excluding the dev folder).
 
-3. Add the following script tags to your web page (at the bottom of the \<body> tag) and add your subscription and url keys:-
+3. Add the following script tags to your web page (at the bottom of your \<body> tag) and add your subscription and url keys:-
 
     \<script src="/qna/qna.min.js"></script>
     \<script>
@@ -58,3 +58,7 @@ The following are the configurable parameters for the **qnaClient**, together wi
 **"inputPrompt"** : "What would you like to say?"  -  The placeholder text prompt displayed in the user input text box.
 
 **"busyMessage"** : "Hold on a mo..."  -  The message displayed over the chat stream whilst a user question is submitted and a awaiting a response.
+
+
+### Example of Parameter Use
+    qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", { "theme" : "default", "title" : "Chat to Stephen Garside"});

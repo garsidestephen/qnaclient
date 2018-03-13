@@ -11,10 +11,10 @@ To implement, follow these 3 steps:-
 
 3. Add the following script tags to the bottom of your web page:
 
-    <script src="/qna/qna.min.js"></script>
-    <script>
-    qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
-    </script>
+<script src="/qna/qna.min.js"></script>
+<script>
+	qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
+</script>
 
 
 ## Initialising

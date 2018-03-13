@@ -29,6 +29,7 @@ Thats it for a standard implementation!
 The following are the configurable parameters for the **qnaClient**, together with their defaults and a brief explanation:-
 
 **"title"** :  ""
+
 (Displayed in the header bar of the chat window)
 
 **"minimumAcceptableAnswerScore"** : "50"

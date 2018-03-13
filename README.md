@@ -28,11 +28,9 @@ Thats it for a standard implementation!
 ## Configurable Parameters
 The following are the configurable parameters for the **qnaClient**, together with their defaults and a brief explanation:-
 
-**"title"** :  ""
-(Displayed in the header bar of the chat window)
+**"title"** :  ""  -  Displayed in the header bar of the chat window
 
-**"minimumAcceptableAnswerScore"** : "50"
-(Used to calculate whether the top answer returned by your bot is an acceptable response. If all answers returned have a lower score then the '**noAnswer**' phrase is displayed in the chat stream.
+**"minimumAcceptableAnswerScore"** : "50"  -  Used to calculate whether the top answer returned by your bot is an acceptable response. If all answers returned have a lower score then the '**noAnswer**' phrase is displayed in the chat stream.
 
 **"pageContainerId"** :  ""
 If present, the qna client html will be injected into the dom element with this id.

@@ -1,4 +1,4 @@
-﻿.qna-launcher, .qna {
+.qna-launcher, .qna {
   display: none;
   position: fixed;
   z-index: 9999; }
@@ -31,7 +31,7 @@
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   height: 100%; }
   .qna-bot__header {
     justify-content: flex-start;
@@ -39,7 +39,8 @@
     flex: none;
     display: flex;
     align-items: center;
-    padding: 5px 5px 7px 5px; }
+    padding: 5px 5px 7px 5px;
+    box-sizing: border-box !important; }
     .qna-bot__header__logo {
       height: 100%;
       width: auto;
@@ -136,11 +137,10 @@
     border-top-width: 1px;
     border-top-style: solid;
     justify-content: flex-end;
-    padding: 5px; }
+    padding: 10px; }
     .qna-bot__input__text {
       display: block;
-      width: 100%;
-      padding: 10px; }
+      width: 100%; }
     .qna-bot__input__text, .qna-bot__input__text:focus {
       border: none;
       outline: none; }
@@ -157,7 +157,8 @@
 .qna-theme--default .qna-bot {
   background-color: #fff;
   border-color: #000;
-  font-size: 16px; }
+  font-size: 16px !important;
+  font-family: Arial, Helvetica, sans-serif !important; }
   .qna-theme--default .qna-bot__header {
     background-color: #000;
     color: #fff; }
@@ -171,16 +172,18 @@
       fill: transparent; }
   .qna-theme--default .qna-bot__stream-wrap {
     padding: 5px; }
-    .qna-theme--default .qna-bot__stream-wrap__stream {
-      font-size: 14px; }
-      .qna-theme--default .qna-bot__stream-wrap__stream__interaction {
-        border-color: #7c7cff; }
-        .qna-theme--default .qna-bot__stream-wrap__stream__interaction__arrow-right {
-          border-left-color: #858585; }
-        .qna-theme--default .qna-bot__stream-wrap__stream__interaction__arrow-left {
-          border-right-color: #7c7cff; }
-      .qna-theme--default .qna-bot__stream-wrap__stream__date-time {
-        color: #989898; }
+    .qna-theme--default .qna-bot__stream-wrap__stream__interaction {
+      border-color: #7c7cff; }
+      .qna-theme--default .qna-bot__stream-wrap__stream__interaction__speech {
+        font-size: 16px;
+        line-height: 20px;
+        color: #000; }
+      .qna-theme--default .qna-bot__stream-wrap__stream__interaction__arrow-right {
+        border-left-color: #858585; }
+      .qna-theme--default .qna-bot__stream-wrap__stream__interaction__arrow-left {
+        border-right-color: #7c7cff; }
+    .qna-theme--default .qna-bot__stream-wrap__stream__date-time {
+      color: #989898; }
     .qna-theme--default .qna-bot__stream-wrap__busy {
       opacity: 0.8;
       background-color: #000; }
@@ -200,6 +203,8 @@
   .qna-theme--default .qna-bot__input {
     border-left-color: #7c7cff;
     border-top-color: #000; }
+    .qna-theme--default .qna-bot__input__text {
+      font-size: 16px; }
 
 .qna-position--top-left {
   bottom: 1vh;

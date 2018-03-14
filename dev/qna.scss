@@ -1,4 +1,4 @@
-﻿@mixin drop-shadow
+@mixin drop-shadow
 {
     -webkit-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.75);
@@ -64,7 +64,7 @@ $speech-radius: 5px;
     @include drop-shadow;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     height: 100%;
 
     &__header
@@ -75,6 +75,7 @@ $speech-radius: 5px;
         display: flex;
         align-items: center;
         padding: 5px 5px 7px 5px;
+        box-sizing: border-box !important;
 
         &__logo
         {
@@ -234,13 +235,12 @@ $speech-radius: 5px;
         border-top-width: 1px;
         border-top-style: solid;
         justify-content: flex-end;
-        padding: 5px;
+        padding: 10px;
 
         &__text
         {
             display: block;
             width: 100%;
-            padding: 10px;
         }
 
             &__text, &__text:focus
@@ -254,7 +254,8 @@ $speech-radius: 5px;
 .qna-theme--default
 {
     $font-size-general: 16px;
-    $font-size-stream: 14px;
+    $font-size-stream: 16px;
+    $font-size-stream-line-height: 20px;
     $color-background-primary: #000;
     $color-foreground-primary: #fff;
     $color-foreground-secondary: #989898;
@@ -263,6 +264,9 @@ $speech-radius: 5px;
     $color-user-arrow: #7c7cff;
     $color-user-background: #b3b3ff;
     $color-busy-background: #000;
+    $color-stream-text: #000;
+
+
 
     .qna-launcher
     {
@@ -285,7 +289,8 @@ $speech-radius: 5px;
     {
         background-color: $color-foreground-primary;
         border-color: $color-background-primary;
-        font-size: $font-size-general;
+        font-size: $font-size-general !important;
+        font-family: Arial, Helvetica, sans-serif !important;
 
         &__header
         {
@@ -319,11 +324,16 @@ $speech-radius: 5px;
 
             &__stream
             {
-                font-size: $font-size-stream;
-
                 &__interaction
                 {
                     border-color: $color-user-arrow;
+
+                    &__speech
+                    {
+                        font-size: $font-size-stream;
+                        line-height: $font-size-stream-line-height;
+                        color: $color-stream-text;
+                    }
 
                     &__arrow-right
                     {
@@ -387,6 +397,11 @@ $speech-radius: 5px;
         {
             border-left-color: $color-user-arrow;
             border-top-color: $color-background-primary;
+
+            &__text
+            {
+                font-size: $font-size-stream;
+            }
         }
     }
 }

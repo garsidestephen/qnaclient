@@ -1,4 +1,4 @@
-﻿// QNAClient - http://www.stephengarside.co.uk/blog/webdev/create-a-simple-business-chatbot-with-microsoft-qna-maker/
+// QNAClient - http://www.stephengarside.co.uk/blog/webdev/create-a-simple-business-chatbot-with-microsoft-qna-maker/
 
 var qnaClient = (function () {
     var isBrowserSpeechRecognitionEnabled = false,
@@ -24,7 +24,7 @@ var qnaClient = (function () {
         qnaEndpoint = null,
         previousQuestions = [],
         previousQuestionsCurrentIndex = 0,
-        configurableParams = { "title": "", "minimumAcceptableAnswerScore": 50, "botName": "QNA Bot", "botImageUrl": "", "pageContainerId": "", "pageContainerClass": "", "theme": "default", "noAnswerPhrase": "Sorry, I don't understand.", "somethingGoneWrongPhrase": "Mmm, something went wrong there, try me again!", "loggingEnabled": true, "displayImagesInline": false, "botPrimingPhrase": "Hi", "logoUrl": "/qna/logo.png", "buttonToolTip": "Start a chat", "position": "bottom-left", "inputPrompt": "What would you like to say?", "busyMessage": "Hold on a mo..." };
+        configurableParams = { "title": "", "minimumAcceptableAnswerScore": 50, "pageContainerId": "", "pageContainerClass": "", "theme": "default", "noAnswerPhrase": "Sorry, I don't understand.", "somethingGoneWrongPhrase": "Mmm, something went wrong there, try me again!", "loggingEnabled": true, "displayImagesInline": false, "botPrimingPhrase": "Hi", "logoUrl": "/qna/logo.png", "buttonToolTip": "Start a chat", "position": "bottom-left", "inputPrompt": "What would you like to say?", "busyMessage": "Hold on a mo..." };
 
     ///
     /// Init QNA Client
@@ -214,8 +214,6 @@ var qnaClient = (function () {
             params.minimumAcceptableAnswerScore != null ? configurableParams.minimumAcceptableAnswerScore = params.minimumAcceptableAnswerScore : configurableParams.minimumAcceptableAnswerScore;
             params.theme != null ? configurableParams.theme = params.theme : configurableParams.theme;
             params.title != null ? configurableParams.title = params.title : configurableParams.title;
-            params.botName != null ? configurableParams.botName = params.botName : configurableParams.botName;
-            params.botImageUrl != null ? configurableParams.botImageUrl = params.botImageUrl : configurableParams.botImageUrl;
             params.pageContainerId != null ? configurableParams.pageContainerId = params.pageContainerId : configurableParams.pageContainerId;
             params.pageContainerClass != null ? configurableParams.pageContainerClass = params.pageContainerClass : configurableParams.pageContainerClass;
             params.noAnswerPhrase != null ? configurableParams.noAnswerPhrase = params.noAnswerPhrase : configurableParams.noAnswerPhrase;
@@ -399,7 +397,7 @@ var qnaClient = (function () {
     function responseError(XMLHttpRequest, textStatus, errorThrown) {
         log(textStatus);
         clearInputAndFocus();
-        updateStream('Something went wrong, please ask your question again.', true);
+        updateStream(configurableParams.somethingGoneWrongPhrase, true);
         hideBusy();
     }
 

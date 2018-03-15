@@ -24,7 +24,8 @@ var qnaClient = (function () {
         qnaEndpoint = null,
         previousQuestions = [],
         previousQuestionsCurrentIndex = 0,
-        configurableParams = { "title": "", "minimumAcceptableAnswerScore": 50, "pageContainerId": "", "pageContainerClass": "", "theme": "default", "noAnswerPhrase": "Sorry, I don't understand.", "somethingGoneWrongPhrase": "Mmm, something went wrong there, try me again!", "loggingEnabled": true, "displayImagesInline": false, "botPrimingPhrase": "Hi", "logoUrl": "/qna/logo.png", "buttonToolTip": "Start a chat", "position": "bottom-left", "inputPrompt": "What would you like to say?", "busyMessage": "Hold on a mo..." };
+        unansweredQuestionsInThisSession = [],
+        configurableParams = { "title": "", "minimumAcceptableAnswerScore": 50, "pageContainerId": "", "pageContainerClass": "", "theme": "default", "noAnswerPhrase": "Sorry, I don't understand.", "somethingGoneWrongPhrase": "Mmm, something went wrong there, try me again!", "loggingEnabled": true, "displayImagesInline": false, "botPrimingPhrase": "Hi", "logoUrl": "/qna/logo.png", "buttonToolTip": "Start a chat", "position": "bottom-left", "inputPrompt": "What would you like to say?", "busyMessage": "Hold on a mo...", "unansweredQuestionsEndpoint": "" };
 
     ///
     /// Init QNA Client
@@ -93,12 +94,34 @@ var qnaClient = (function () {
     }
 
     ///
+    /// Enable Unanswered Question Logging
+    ///
+    function registerUnansweredQuestions() {
+        if (configurableParams.unansweredQuestionsEndpoint != null && configurableParams.unansweredQuestionsEndpoint.match(/(http(s?))\:\/\//gi)) {
+            var unansweredQuestions = unansweredQuestionsInThisSession.join(' | ');
+            $.post(configurableParams.unansweredQuestionsEndpoint, { UnansweredQuestion: unansweredQuestions });
+        }
+    }
+
+    ///
+    /// Clear Unanswered Questions In This Session
+    /// 
+    function clearUnansweredQuestionsInThisSession() {
+        unansweredQuestionsInThisSession = [];
+    }
+
+    ///
     /// Init Events
     ///
     function initEvents() {
         $launcher.on('click', function () { hideQnaLauncher(); showQnaBot(); });
 
-        $closer.on('click', function () { hideQnaBot(); showQnaLauncher(); });
+        $closer.on('click', function () {
+            hideQnaBot();
+            showQnaLauncher();
+            registerUnansweredQuestions();
+            clearUnansweredQuestionsInThisSession();
+        });
 
         // Keypress on main input field
         $input.on('keydown', function (e) { checkInputKeyPress(e); });
@@ -226,6 +249,7 @@ var qnaClient = (function () {
             params.position != null ? configurableParams.position = params.position : configurableParams.position;
             params.logoUrl != null ? configurableParams.logoUrl = params.logoUrl : configurableParams.logoUrl;
             params.busyMessage != null ? configurableParams.busyMessage = params.busyMessage : configurableParams.busyMessage;
+            params.unansweredQuestionsEndpoint != null ? configurableParams.unansweredQuestionsEndpoint = params.unansweredQuestionsEndpoint : configurableParams.unansweredQuestionsEndpoint;
         }
     }
 
@@ -312,7 +336,7 @@ var qnaClient = (function () {
                     "question": question,
                     "top": top
                 }),
-                success: function (data) { parseResponse(data, callbackFn) },
+                success: function (data) { parseResponse(data, question, callbackFn) },
                 error: function (XMLHttpRequest, textStatus, errorThrown) { responseError(XMLHttpRequest, textStatus, errorThrown, callbackFn); }
             });
         }
@@ -321,7 +345,7 @@ var qnaClient = (function () {
     ///
     /// Parse Response
     ///
-    function parseResponse(data, callbackFn) {
+    function parseResponse(data, originalQuestion, callbackFn) {
         hideBusy();
         var response = "";
 
@@ -342,6 +366,9 @@ var qnaClient = (function () {
                 // None of our answers are over the acceptable score
                 // so display our 'no answer' phrase
                 response = configurableParams.noAnswerPhrase;
+
+                // Log the fact this question could not be answered
+                unansweredQuestionsInThisSession.push(originalQuestion);
             }
 
             log(`Top Answer: ${topAnswer.answer} | Score: ${topAnswer.score}`);

@@ -17,6 +17,7 @@ To implement, follow these 3 steps:-
     	qnaClient.Init("Your QNA ocpApimSubscriptionKey", "Your QNA urlKey", { });
     \</script>
 
+<img src="http://www.stephengarside.co.uk/media/1092/qna-maker-chat-bot-keys.jpg"/>
 
 ## Initialising
 The following is an example of initialising the qnaClient:-

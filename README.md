@@ -59,6 +59,7 @@ The following are the configurable parameters for the **qnaClient**, together wi
 
 **"busyMessage"** : "Hold on a mo..."  -  The message displayed over the chat stream whilst a user question is submitted and a awaiting a response.
 
+**"unansweredQuestionsEndpoint"** : "http://www.somewebsite.co.uk/unanswered-questions" - Optional - If you provide an endpoint, details of unanswered questions will be posted to the endpoint on closure of the chat window. The method used is POST, with an 'UnansweredQuestion' value containing pipe delimited questions that were not answered e.g. some unanswered question | some other unanswered question.
 
 ### Example of Parameter Use
     qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", { "theme" : "default", "title" : "Chat to Stephen Garside"});

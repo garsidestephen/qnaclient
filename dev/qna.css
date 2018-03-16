@@ -13,7 +13,7 @@
 
 .qna {
   width: 98%;
-  height: 98vh; }
+  max-height: 100%; }
   @media screen and (min-width: 480px) {
     .qna {
       width: 320px; } }
@@ -174,10 +174,12 @@
     padding: 5px; }
     .qna-theme--default .qna-bot__stream-wrap__stream__interaction {
       border-color: #7c7cff; }
-      .qna-theme--default .qna-bot__stream-wrap__stream__interaction__speech {
+      .qna-theme--default .qna-bot__stream-wrap__stream__interaction__speech, .qna-theme--default .qna-bot__stream-wrap__stream__interaction a {
         font-size: 16px;
         line-height: 20px;
         color: #000; }
+      .qna-theme--default .qna-bot__stream-wrap__stream__interaction__speech a {
+        text-decoration: underline; }
       .qna-theme--default .qna-bot__stream-wrap__stream__interaction__arrow-right {
         border-left-color: #858585; }
       .qna-theme--default .qna-bot__stream-wrap__stream__interaction__arrow-left {
@@ -206,35 +208,55 @@
     .qna-theme--default .qna-bot__input__text {
       font-size: 16px; }
 
-.qna-position--top-left {
-  bottom: 1vh;
+.qna-launcher.qna-position--top-left, .qna.qna-position--top-left {
+  top: 1vh;
   left: 1%; }
-  @media screen and (min-width: 1200px) {
-    .qna-position--top-left {
-      bottom: 20px;
+  @media screen and (min-width: 768px) {
+    .qna-launcher.qna-position--top-left, .qna.qna-position--top-left {
+      top: 20px;
       left: 20px; } }
 
-.qna-position--top-right {
+.qna-launcher.qna-position--top-right, .qna.qna-position--top-right {
   top: 1vh;
   right: 1%; }
-  @media screen and (min-width: 1200px) {
-    .qna-position--top-right {
+  @media screen and (min-width: 768px) {
+    .qna-launcher.qna-position--top-right, .qna.qna-position--top-right {
       top: 20px;
       right: 20px; } }
 
-.qna-position--bottom-left {
+.qna-launcher.qna-position--bottom-left {
   bottom: 1vh;
   left: 1%; }
-  @media screen and (min-width: 1200px) {
-    .qna-position--bottom-left {
+  @media screen and (min-width: 768px) {
+    .qna-launcher.qna-position--bottom-left {
       bottom: 20px;
       left: 20px; } }
 
-.qna-position--bottom-right {
+.qna-launcher.qna-position--bottom-right {
   bottom: 1vh;
   right: 1%; }
-  @media screen and (min-width: 1200px) {
-    .qna-position--bottom-right {
+  @media screen and (min-width: 768px) {
+    .qna-launcher.qna-position--bottom-right {
+      bottom: 20px;
+      right: 20px; } }
+
+.qna.qna-position--bottom-left {
+  top: 1vh;
+  bottom: 1vh;
+  left: 1%; }
+  @media screen and (min-width: 768px) {
+    .qna.qna-position--bottom-left {
+      top: initial;
+      bottom: 20px;
+      left: 20px; } }
+
+.qna.qna-position--bottom-right {
+  top: 1vh;
+  bottom: 1vh;
+  right: 1%; }
+  @media screen and (min-width: 768px) {
+    .qna.qna-position--bottom-right {
+      top: initial;
       bottom: 20px;
       right: 20px; } }
 

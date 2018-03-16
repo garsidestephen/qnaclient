@@ -34,7 +34,7 @@ $speech-radius: 5px;
 .qna
 {
     width: 98%;
-    height: 98vh;
+    max-height: 100%;
 
     @media screen and (min-width : 480px)
     {
@@ -328,12 +328,17 @@ $speech-radius: 5px;
                 {
                     border-color: $color-user-arrow;
 
-                    &__speech
+                    &__speech, a
                     {
                         font-size: $font-size-stream;
                         line-height: $font-size-stream-line-height;
                         color: $color-stream-text;
                     }
+
+                        &__speech a
+                        {
+                            text-decoration: underline;
+                        }
 
                     &__arrow-right
                     {
@@ -406,97 +411,78 @@ $speech-radius: 5px;
     }
 }
 
-.qna-position--top-left
+.qna-launcher.qna-position--top-left, .qna.qna-position--top-left
 {
-    bottom: 1vh;
+    top: 1vh;
     left: 1%;
-
-    @media screen and (min-width : 480px)
-    {
-    }
 
     @media screen and (min-width : 768px)
     {
-    }
-
-    @media screen and (min-width : 1024px)
-    {
-    }
-
-    @media screen and (min-width : 1200px)
-    {
-        bottom: 20px;
+        top: 20px;
         left: 20px;
     }
 }
 
-.qna-position--top-right
+.qna-launcher.qna-position--top-right, .qna.qna-position--top-right
 {
     top: 1vh;
     right: 1%;
 
-    @media screen and (min-width : 480px)
-    {
-    }
 
     @media screen and (min-width : 768px)
-    {
-    }
-
-    @media screen and (min-width : 1024px)
-    {
-    }
-
-    @media screen and (min-width : 1200px)
     {
         top: 20px;
         right: 20px;
     }
 }
 
-.qna-position--bottom-left
+.qna-launcher.qna-position--bottom-left
 {
-    bottom: 1vh;
+    bottom:1vh;
     left: 1%;
 
-    @media screen and (min-width : 480px)
-    {
-    }
-
     @media screen and (min-width : 768px)
-    {
-    }
-
-    @media screen and (min-width : 1024px)
-    {
-    }
-
-    @media screen and (min-width : 1200px)
     {
         bottom: 20px;
         left: 20px;
     }
 }
 
-.qna-position--bottom-right
+.qna-launcher.qna-position--bottom-right
 {
     bottom: 1vh;
     right: 1%;
 
-    @media screen and (min-width : 480px)
+    @media screen and (min-width : 768px)
     {
+        bottom: 20px;
+        right: 20px;
     }
+}
+
+.qna.qna-position--bottom-left
+{
+    top:1vh;
+    bottom: 1vh;
+    left: 1%;
 
     @media screen and (min-width : 768px)
     {
+        top:initial;
+        bottom: 20px;
+        left: 20px;
     }
+}
 
-    @media screen and (min-width : 1024px)
-    {
-    }
+.qna.qna-position--bottom-right
+{
+    top: 1vh;
+    bottom: 1vh;
+    right: 1%;
 
-    @media screen and (min-width : 1200px)
+    @media screen and (min-width : 768px)
     {
+        top:initial;
         bottom: 20px;
         right: 20px;
     }

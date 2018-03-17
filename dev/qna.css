@@ -69,7 +69,6 @@
     .qna-bot__stream-wrap__stream__interaction {
       padding: 0;
       margin-bottom: 20px;
-      display: flex;
       align-items: center; }
       .qna-bot__stream-wrap__stream__interaction__arrow-right, .qna-bot__stream-wrap__stream__interaction__arrow-left {
         width: 0;
@@ -89,6 +88,8 @@
           width: 100%;
           height: auto;
           margin: 5px 0; }
+        .qna-bot__stream-wrap__stream__interaction__speech a {
+          word-break: break-all; }
     .qna-bot__stream-wrap__stream__date-time {
       display: block;
       font-size: 11px;
@@ -115,22 +116,21 @@
           width: 20px;
           height: 20px;
           margin-bottom: 10px; }
-  .qna-bot__stream-wrap__stream__interaction--from-bot {
-    justify-content: flex-end; }
-    .qna-bot__stream-wrap__stream__interaction--from-bot .qna-bot__stream-wrap__stream__interaction__speech {
-      padding: 10px;
-      border-radius: 5px;
-      border-right-width: 3px;
-      border-right-style: solid;
-      margin-left: 30px; }
+  .qna-bot__stream-wrap__stream__interaction--from-bot .qna-bot__stream-wrap__stream__interaction__speech {
+    padding: 10px;
+    border-radius: 5px;
+    border-right-width: 3px;
+    border-right-style: solid;
+    margin-left: 20px; }
   .qna-bot__stream-wrap__stream__interaction--from-user {
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    display: flex; }
     .qna-bot__stream-wrap__stream__interaction--from-user .qna-bot__stream-wrap__stream__interaction__speech {
       padding: 10px;
       border-radius: 5px;
       border-left-width: 3px;
       border-left-style: solid;
-      margin-right: 30px; }
+      margin-right: 20px; }
   .qna-bot__input {
     border-left-width: 5px;
     border-left-style: solid;
@@ -144,6 +144,12 @@
     .qna-bot__input__text, .qna-bot__input__text:focus {
       border: none;
       outline: none; }
+  .qna-bot .qna-chips {
+    text-align: center; }
+    .qna-bot .qna-chips__chip {
+      margin: 0 5px;
+      white-space: nowrap;
+      cursor: pointer; }
 
 .qna-theme--default .qna-launcher__button {
   background-color: #000;
@@ -207,6 +213,20 @@
     border-top-color: #000; }
     .qna-theme--default .qna-bot__input__text {
       font-size: 16px; }
+
+.qna-theme--default .qna-chips__chip {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #b0ffac;
+  color: #000;
+  font-size: 14px;
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  transition: all 0.3s linear; }
+  .qna-theme--default .qna-chips__chip:hover {
+    background-color: #4fff46;
+    transition: all 0.3s linear; }
 
 .qna-launcher.qna-position--top-left, .qna.qna-position--top-left {
   top: 1vh;

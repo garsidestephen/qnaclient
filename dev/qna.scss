@@ -123,7 +123,6 @@ $speech-radius: 5px;
             {
                 padding: 0;
                 margin-bottom: 20px;
-                display: flex;
                 align-items: center;
 
                 &__arrow-right, &__arrow-left
@@ -156,6 +155,11 @@ $speech-radius: 5px;
                         width: 100%;
                         height: auto;
                         margin: 5px 0;
+                    }
+
+                    a
+                    {
+                        word-break: break-all;
                     }
                 }
             }
@@ -202,21 +206,20 @@ $speech-radius: 5px;
 
     &__stream-wrap__stream__interaction--from-bot
     {
-        justify-content: flex-end;
-
         .qna-bot__stream-wrap__stream__interaction__speech
         {
             padding: $speech-padding;
             border-radius: $speech-radius;
             border-right-width: 3px;
             border-right-style: solid;
-            margin-left: 30px;
+            margin-left: 20px;
         }
     }
 
     &__stream-wrap__stream__interaction--from-user
     {
         justify-content: flex-start;
+        display: flex;
 
         .qna-bot__stream-wrap__stream__interaction__speech
         {
@@ -224,7 +227,7 @@ $speech-radius: 5px;
             border-radius: $speech-radius;
             border-left-width: 3px;
             border-left-style: solid;
-            margin-right: 30px;
+            margin-right: 20px;
         }
     }
 
@@ -249,6 +252,18 @@ $speech-radius: 5px;
                 outline: none;
             }
     }
+
+    .qna-chips
+    {
+        text-align: center;
+
+        &__chip
+        {
+            margin: 0 5px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+    }
 }
 
 .qna-theme--default
@@ -256,17 +271,18 @@ $speech-radius: 5px;
     $font-size-general: 16px;
     $font-size-stream: 16px;
     $font-size-stream-line-height: 20px;
+    $font-size-chip: 14px;
     $color-background-primary: #000;
     $color-foreground-primary: #fff;
     $color-foreground-secondary: #989898;
+    $color-chip-text: #000;
+    $color-chip-background: #b0ffac;
     $color-bot-arrow: #858585;
     $color-bot-background: #e3e3e3;
     $color-user-arrow: #7c7cff;
     $color-user-background: #b3b3ff;
     $color-busy-background: #000;
     $color-stream-text: #000;
-
-
 
     .qna-launcher
     {
@@ -409,6 +425,26 @@ $speech-radius: 5px;
             }
         }
     }
+
+    .qna-chips
+    {
+        &__chip
+        {
+            padding: 5px;
+            border-radius: 5px;
+            background-color: $color-chip-background;
+            color: $color-chip-text;
+            font-size: $font-size-chip;
+            @include drop-shadow;
+            @include transition;
+
+            &:hover
+            {
+                background-color: darken($color-chip-background, 20%);
+                @include transition;
+            }
+        }
+    }
 }
 
 .qna-launcher.qna-position--top-left, .qna.qna-position--top-left
@@ -438,7 +474,7 @@ $speech-radius: 5px;
 
 .qna-launcher.qna-position--bottom-left
 {
-    bottom:1vh;
+    bottom: 1vh;
     left: 1%;
 
     @media screen and (min-width : 768px)
@@ -462,13 +498,13 @@ $speech-radius: 5px;
 
 .qna.qna-position--bottom-left
 {
-    top:1vh;
+    top: 1vh;
     bottom: 1vh;
     left: 1%;
 
     @media screen and (min-width : 768px)
     {
-        top:initial;
+        top: initial;
         bottom: 20px;
         left: 20px;
     }
@@ -482,7 +518,7 @@ $speech-radius: 5px;
 
     @media screen and (min-width : 768px)
     {
-        top:initial;
+        top: initial;
         bottom: 20px;
         right: 20px;
     }

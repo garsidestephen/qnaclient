@@ -125,6 +125,22 @@ var qnaClient = (function () {
 
         // Keypress on main input field
         $input.on('keydown', function (e) { checkInputKeyPress(e); });
+
+        $qna.on('click', '.js-qna-chip-click', function ()
+        {
+            clickChip($(this));
+        });
+    }
+
+    ///
+    /// Chip clicked
+    ///
+    function clickChip($chip) {
+        var chipValue = $chip.data('chip-value');
+
+        if (chipValue.length) {
+            generateAnswer(chipValue, 1);
+        }
     }
 
     ///
@@ -355,11 +371,20 @@ var qnaClient = (function () {
 
             if (topAnswer.score > configurableParams.minimumAcceptableAnswerScore) {
                 // Our top answer has a height over our acceptable score so show it
-                var richMediaRegex = topAnswer.answer.match(/\[(.*?)\]\((.*?)\)/g);
                 response = topAnswer.answer;
 
+                // Does the response have any rich media to transform?
+                var richMediaRegex = response.match(/\[(.*?)\]\((.*?)\)/g);
                 if (richMediaRegex) {
-                    response = transformRichMedia(topAnswer.answer, richMediaRegex);
+                    response = transformRichMedia(response, richMediaRegex);
+                }
+
+                // Does the response have any chips to transform?
+                var chipsRegex = response.match(/\##chips(.*?)##/g),
+                    chipsHtml = "";
+                if (chipsRegex) {
+                    chipsHtml = getChipHtml(response, chipsRegex[0]);
+                    response = response.replace(/##chips(.*?)##/g, "");
                 }
             }
             else {
@@ -379,7 +404,10 @@ var qnaClient = (function () {
 
         clearInputAndFocus();
 
-        updateStream(response, true);
+        var dateTime = formatDate(new Date()),
+            botResponse = `<div style='display:flex;justify-content: flex-end;align-items: center;margin-bottom:10px;'><p class='qna-bot__stream-wrap__stream__interaction__speech'>${response}<span class='qna-bot__stream-wrap__stream__date-time'>${dateTime}</span></p><div class='qna-bot__stream-wrap__stream__interaction__arrow-right'></div></div>${chipsHtml}`;
+
+        updateStream(botResponse, true);
 
         if (callbackFn) {
             callbackFn();
@@ -419,6 +447,31 @@ var qnaClient = (function () {
     }
 
     ///
+    /// Get Chip Html
+    ///
+    function getChipHtml(text, chips) {
+        chips = chips.replace(/##chips\[|\]##/g, "");       
+
+        var chipList = chips.split("]["),
+            text = "<div class='qna-chips'>";
+
+        for (var i = 0; i < chipList.length; i++) {
+            var chipElements = chipList[i].split("|"),
+                chipText = chipElements[0],
+                chipValue = chipElements[1] == null ? chipElements[0] : chipElements[1];
+
+            if (chipText.length) {
+                // Add Chips 
+                text = `${text}<span class='qna-chips__chip js-qna-chip-click' data-chip-value='${chipValue}'>${chipText}</span>`;
+            }
+        }
+
+        text = `${text}</div>`;
+
+        return text;
+    }
+
+    ///
     /// Deal with Error Response
     ///
     function responseError(XMLHttpRequest, textStatus, errorThrown) {
@@ -434,9 +487,8 @@ var qnaClient = (function () {
     function updateStream(content, isFromBot) {
         var html = "";
 
-        if (isFromBot) {
-            var dateTime = formatDate(new Date());
-            html = `<div class='qna-bot__stream-wrap__stream__interaction qna-bot__stream-wrap__stream__interaction--from-bot'><p class='qna-bot__stream-wrap__stream__interaction__speech'>${content}<span class='qna-bot__stream-wrap__stream__date-time'>${dateTime}</span></p><div class='qna-bot__stream-wrap__stream__interaction__arrow-right'></div></div>`
+        if (isFromBot) {            
+            html = `<div class='qna-bot__stream-wrap__stream__interaction qna-bot__stream-wrap__stream__interaction--from-bot'>${content}</div>`
         }
         else {
             html = `<div class='qna-bot__stream-wrap__stream__interaction qna-bot__stream-wrap__stream__interaction--from-user'><div class='qna-bot__stream-wrap__stream__interaction__arrow-left'></div><p class='qna-bot__stream-wrap__stream__interaction__speech'>${content}</p></div>`
@@ -477,8 +529,7 @@ var qnaClient = (function () {
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0' + minutes : minutes;
-        var strTime = hours + ':' + minutes + ' ' + ampm;
-        return date.getDate() + "/" + date.getMonth() + 1 + "/" + date.getFullYear() + "  " + strTime;
+        return hours + ':' + minutes + ' ' + ampm;
     }
 
     return {

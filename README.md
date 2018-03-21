@@ -1,6 +1,6 @@
 
 
-# qnaClient
+# QNA Client - Free Chatbot Plugin for Websites Utilising Microsoft QNA Maker
 A free javascript client for Microsoft QNA Maker Bot Framework (Requires JQuery 2.1.4 +)
 
 

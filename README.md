@@ -20,7 +20,7 @@ To implement, follow these 3 steps:-
 <img src="http://www.stephengarside.co.uk/media/1092/qna-maker-chat-bot-keys.jpg"/>
 
 ## Initialising
-The following is an example of initialising the qnaClient:-
+The following is an example of initialising the QNAClient plugin:-
 
     qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", {});
 
@@ -28,15 +28,15 @@ Thats it for a standard implementation!
 
 
 ## Configurable Parameters
-The following are the configurable parameters for the **qnaClient**, together with their defaults and a brief explanation:-
+The following are the configurable parameters for **QNAClient**, together with their defaults and a brief explanation:-
 
 **"title"** :  ""  -  Displayed in the header bar of the chat window
 
 **"minimumAcceptableAnswerScore"** : "50"  -  Used to calculate whether the top answer returned by your bot is an acceptable response. If all answers returned have a lower score then the '**noAnswer**' phrase is displayed in the chat stream.
 
-**"pageContainerId"** :  ""  -  If present, the qna client html will be injected into the dom element with this id.
+**"pageContainerId"** :  ""  -  If present, QNAClient html will be injected into the dom element with this id.
 
-**"pageContainerClass"** : ""  -  If present, the qna client html will be injected into the dom element with this class.
+**"pageContainerClass"** : ""  -  If present, QNAClient html will be injected into the dom element with this class.
 
 **"theme"** :  "default"  -  There is currently only 1 theme, however, more are planned, or you can easily create your own!
 
@@ -48,11 +48,11 @@ The following are the configurable parameters for the **qnaClient**, together wi
 
 **"displayImagesInline"** : false  -  If set to true then Images returned in bot answers are displayed as block elements (i.e. on their own line). If false, then images are displayed inline (i.e. within the text).
 
-**"botPrimingPhrase"** : "Hi"  -  When the qnaClient chat window first starts, this phrase is passed to your bot and the response is displayed in the chat stream.
+**"botPrimingPhrase"** : "Hi"  -  When the QNAClient chat window first starts, this phrase is passed to your bot and the response is displayed in the chat stream.
 
 **"logoUrl"** : "/qna/logo.png"  -  The url of the logo displayed in the top left of the chat window header. Image should be 50px x 50px and in .png format.
 
-**"buttonToolTip"** : "Start a chat"  -  The tootltip to display when a user hovers over the chat launcher button.
+**"buttonToolTip"** : "Start a chat"  -  The tooltip to display when a user hovers over the chat launcher button.
 
 **"position"** : "bottom-left"  -  The position of the chat launcher button and the chat window. Options are **bottom-left**, **bottom-right**, **top-left**, **top-right**.
 

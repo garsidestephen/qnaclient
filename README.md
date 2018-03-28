@@ -2,7 +2,8 @@
 
 # QNA Client - Free Chatbot Plugin for Websites Utilising Microsoft QNA Maker
 A free javascript plugin for Microsoft QNA Maker Bot Framework (Requires JQuery 2.1.4 +). Once initialised, the plugin provides a chat-window interface that is fully customisable:-
-<img src="http://www.stephengarside.co.uk/media/1097/qna-client-chat-bot-window-on-a-website.jpg" alt="javascript plugin chat window for Microsoft QNA Maker chat-bot"/>
+
+<img src="http://www.stephengarside.co.uk/media/1097/qna-client-chat-bot-window-on-a-website.jpg" alt="javascript plugin chat window for Microsoft QNA Maker chat-bot" width="320" height="auto"/>
 
 ## Implementation
 To implement, follow these 3 steps:-

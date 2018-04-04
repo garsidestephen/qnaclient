@@ -25,6 +25,7 @@ var qnaClient = (function () {
         previousQuestions = [],
         previousQuestionsCurrentIndex = 0,
         unansweredQuestionsInThisSession = [],
+        chipsOnlyTheme = "chips-only",
         configurableParams = { "title": "", "minimumAcceptableAnswerScore": 50, "pageContainerId": "", "pageContainerClass": "", "theme": "default", "noAnswerPhrase": "Sorry, I don't understand.", "somethingGoneWrongPhrase": "Mmm, something went wrong there, try me again!", "loggingEnabled": true, "displayImagesInline": false, "botPrimingPhrase": "Hi", "logoUrl": "/qna/logo.png", "buttonToolTip": "Start a chat", "position": "bottom-left", "inputPrompt": "What would you like to say?", "busyMessage": "Hold on a mo...", "unansweredQuestionsEndpoint": "" };
 
     ///
@@ -58,7 +59,12 @@ var qnaClient = (function () {
     ///
     function start() {
         var callbackFn = function () {
-            showQnaLauncher();
+            if (configurableParams.theme != chipsOnlyTheme) {
+                showQnaLauncher();
+            }
+            else {
+                showQnaBot();
+            }
         };
 
         generateAnswer(configurableParams.botPrimingPhrase, 1, callbackFn);
@@ -126,8 +132,7 @@ var qnaClient = (function () {
         // Keypress on main input field
         $input.on('keydown', function (e) { checkInputKeyPress(e); });
 
-        $qna.on('click', '.js-qna-chip-click', function ()
-        {
+        $qna.on('click', '.js-qna-chip-click', function () {
             clickChip($(this));
         });
     }
@@ -363,7 +368,8 @@ var qnaClient = (function () {
     ///
     function parseResponse(data, originalQuestion, callbackFn) {
         hideBusy();
-        var response = "";
+        var response = "",
+            chipsHtml = "";
 
         if (data != null && data.answers != null && data.answers.length > 0) {
             // We have at least one answer
@@ -380,8 +386,8 @@ var qnaClient = (function () {
                 }
 
                 // Does the response have any chips to transform?
-                var chipsRegex = response.match(/\##chips(.*?)##/g),
-                    chipsHtml = "";
+                var chipsRegex = response.match(/\##chips(.*?)##/g);
+
                 if (chipsRegex) {
                     chipsHtml = getChipHtml(response, chipsRegex[0]);
                     response = response.replace(/##chips(.*?)##/g, "");
@@ -450,7 +456,7 @@ var qnaClient = (function () {
     /// Get Chip Html
     ///
     function getChipHtml(text, chips) {
-        chips = chips.replace(/##chips\[|\]##/g, "");       
+        chips = chips.replace(/##chips\[|\]##/g, "");
 
         var chipList = chips.split("]["),
             text = "<div class='qna-chips'>";
@@ -487,7 +493,7 @@ var qnaClient = (function () {
     function updateStream(content, isFromBot) {
         var html = "";
 
-        if (isFromBot) {            
+        if (isFromBot) {
             html = `<div class='qna-bot__stream-wrap__stream__interaction qna-bot__stream-wrap__stream__interaction--from-bot'>${content}</div>`
         }
         else {
@@ -515,7 +521,12 @@ var qnaClient = (function () {
         var themeName = `qna-theme--${configurableParams.theme}`,
             positionName = `qna-position--${configurableParams.position}`;
 
-        $qna.addClass(themeName).addClass(positionName);
+        $qna.addClass(themeName);
+
+        if (configurableParams.theme != chipsOnlyTheme) {
+            $qna.addClass(positionName);
+        }
+
         $launcher.addClass(themeName).addClass(positionName);
     }
 

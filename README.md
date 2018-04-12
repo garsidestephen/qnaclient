@@ -23,7 +23,7 @@ To implement, follow these 3 steps:-
 ## Initialising
 The following is an example of initialising the QNAClient plugin:-
 
-    qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", {});
+    CreateQNAClient("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", {});
 
 Thats it for a standard implementation!
 
@@ -63,7 +63,7 @@ The following are the configurable parameters for **QNAClient**, together with t
 
 
 ### Example of Parameter Use
-    qnaClient.Init("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", { "theme" : "default", "title" : "Chat to Stephen Garside"});
+    CreateQNAClient("84969b11b88449beb0cf2768f7b07597", "a7054a6d-0f82-4d8c-a9ae-9e4dca2b945d", { "theme" : "default", "title" : "Chat to Stephen Garside"});
 
 ### Include Chips
 You can add chips to your responses to offer your users options to select rather than having to type. Read more about how to add chips to qna maker chat-bot.

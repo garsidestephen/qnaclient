@@ -31,37 +31,12 @@ $speech-radius: 5px;
     }
 }
 
-.qna
-{
-    width: 98%;
-    max-height: 100%;
-
-    @media screen and (min-width : 480px)
-    {
-        width: 320px;
-    }
-
-    @media screen and (min-width : 768px)
-    {
-        height: 500px;
-    }
-
-    @media screen and (min-width : 1024px)
-    {
-    }
-
-    @media screen and (min-width : 1200px)
-    {
-    }
-}
-
 .qna-bot
 {
     background-color: #fff;
     border-style: solid;
     border-width: 4px;
     border-radius: 2px;
-    @include drop-shadow;
     display: flex;
     flex-direction: column;
     box-sizing: border-box !important;
@@ -122,7 +97,7 @@ $speech-radius: 5px;
             &__interaction
             {
                 padding: 0;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
                 align-items: center;
 
                 &__arrow-right, &__arrow-left
@@ -212,7 +187,6 @@ $speech-radius: 5px;
             border-radius: $speech-radius;
             border-right-width: 3px;
             border-right-style: solid;
-            margin-left: 20px;
         }
     }
 
@@ -227,7 +201,6 @@ $speech-radius: 5px;
             border-radius: $speech-radius;
             border-left-width: 3px;
             border-left-style: solid;
-            margin-right: 20px;
         }
     }
 
@@ -263,6 +236,30 @@ $speech-radius: 5px;
             white-space: nowrap;
             cursor: pointer;
         }
+    }
+}
+
+.qna.qna-theme--default
+{
+    width: 98%;
+    max-height: 100%;
+
+    @media screen and (min-width : 480px)
+    {
+        width: 400px;
+    }
+
+    @media screen and (min-width : 768px)
+    {
+        height: 500px;
+    }
+
+    @media screen and (min-width : 1024px)
+    {
+    }
+
+    @media screen and (min-width : 1200px)
+    {
     }
 }
 
@@ -307,6 +304,7 @@ $speech-radius: 5px;
         border-color: $color-background-primary;
         font-size: $font-size-general !important;
         font-family: Arial, Helvetica, sans-serif !important;
+        @include drop-shadow;
 
         &__header
         {
@@ -343,6 +341,14 @@ $speech-radius: 5px;
                 &__interaction
                 {
                     border-color: $color-user-arrow;
+
+                    &__wrap
+                    {
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        margin-bottom: 10px;
+                    }
 
                     &__speech, a
                     {
@@ -401,6 +407,7 @@ $speech-radius: 5px;
             {
                 border-right-color: $color-bot-arrow;
                 background-color: $color-bot-background;
+                margin-left: 20px;
             }
         }
 
@@ -411,6 +418,7 @@ $speech-radius: 5px;
                 border-left-color: $color-user-arrow;
                 background-color: $color-user-background;
                 color: $color-background-primary;
+                margin-right: 20px;
             }
         }
 
@@ -423,6 +431,153 @@ $speech-radius: 5px;
             {
                 font-size: $font-size-stream;
             }
+        }
+    }
+
+    .qna-chips
+    {
+        &__chip
+        {
+            padding: 5px;
+            border-radius: 5px;
+            background-color: $color-chip-background;
+            color: $color-chip-text;
+            font-size: $font-size-chip;
+            @include drop-shadow;
+            @include transition;
+
+            &:hover
+            {
+                background-color: darken($color-chip-background, 20%);
+                @include transition;
+            }
+        }
+    }
+}
+
+.qna.qna-theme--chips-only
+{
+    position: relative;
+}
+
+.qna-theme--chips-only
+{
+    $font-size-general: 16px;
+    $font-size-stream: 16px;
+    $font-size-stream-line-height: 20px;
+    $font-size-chip: 14px;
+    $color-background-primary: #000;
+    $color-foreground-primary: #fff;
+    $color-foreground-secondary: #989898;
+    $color-chip-text: #000;
+    $color-chip-background: #b0ffac;
+    $color-bot-arrow: #858585;
+    $color-bot-background: #e3e3e3;
+    $color-user-arrow: #7c7cff;
+    $color-user-background: #b3b3ff;
+    $color-busy-background: #000;
+    $color-stream-text: #000;
+
+    .qna-launcher
+    {
+        display: none;
+    }
+
+    .qna-bot
+    {
+        background-color: $color-foreground-primary;
+        border: none;
+        padding: 20px;
+        font-size: $font-size-general !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        width: 100%;
+
+        &__header
+        {
+            display: none;
+        }
+
+        &__stream-wrap
+        {
+            padding: 5px;
+
+            &__stream
+            {
+                &__interaction
+                {
+                    border: none;
+                    
+                    &__wrap
+                    {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 10px;
+                    }
+
+                    &__speech, a
+                    {
+                        font-size: $font-size-stream;
+                        line-height: $font-size-stream-line-height;
+                        color: $color-stream-text;
+                    }
+
+                        &__speech a
+                        {
+                            text-decoration: underline;
+                        }
+
+                    &__arrow-right, &__arrow-left
+                    {
+                        display: none;
+                    }
+                }
+
+                &__date-time
+                {
+                    color: $color-foreground-secondary;
+                }
+            }
+
+            &__busy
+            {
+                opacity: 0.8;
+                background-color: $color-busy-background;
+
+                &__wrap
+                {
+                    &__progress
+                    {
+                        background-color: $color-foreground-primary;
+                        border-radius: 50%;
+                        animation: flash 2s linear infinite;
+                    }
+
+                    &__message
+                    {
+                        color: $color-foreground-primary;
+                    }
+                }
+            }
+        }
+
+        &__stream-wrap__stream__interaction--from-bot
+        {
+            .qna-bot__stream-wrap__stream__interaction__speech
+            {
+                border-right: none;
+                background-color: $color-bot-background;
+            }
+        }
+
+        &__stream-wrap__stream__interaction--from-user
+        {
+            display: none;
+        }
+
+        &__input
+        {
+            display: none;
         }
     }
 

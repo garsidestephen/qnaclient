@@ -269,7 +269,7 @@
       color: #989898; }
     .qna-theme--chips-only .qna-bot__stream-wrap__busy {
       opacity: 0.8;
-      background-color: #000; }
+      background-color: #fff; }
       .qna-theme--chips-only .qna-bot__stream-wrap__busy__wrap__progress {
         background-color: #fff;
         border-radius: 50%;

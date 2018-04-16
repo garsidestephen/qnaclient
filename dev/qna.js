@@ -167,7 +167,7 @@ function CreateQNAClient(ocpApimSubscriptionKey, urlKey, params) {
         function showBusy(callbackFn) {
             var streamHeight = $stream.height(),
                 streamWrapHeight = $streamWrap.height(),
-                busyHeight = streamHeight < streamWrapHeight ? streamWrapHeight + 20 : streamHeight + 20;
+                busyHeight = streamHeight < streamWrapHeight ? streamWrapHeight + 10 : streamHeight + 10;
 
             $busy.height(busyHeight);
 
